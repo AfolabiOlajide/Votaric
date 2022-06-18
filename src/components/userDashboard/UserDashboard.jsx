@@ -14,7 +14,7 @@ const UserDashboard = () => {
 				different chains like Polygon, Ethereum, Binance Smart Chain
 				etc. You can also view NFT assets if available.
 			</p>
-			<Link to="/dashboard">
+			<Link to="/dashboard" className="max-content">
 				<Button className="primary">Check Dashboard</Button>
 			</Link>
 		</Card>

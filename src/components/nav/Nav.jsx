@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import { connectAccount } from "../../api/walletConnect";
 import VotaricContext from "../../context/VotaricStore";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 import "./Nav.css";
@@ -32,7 +32,9 @@ const Nav = () => {
 	return (
 		<div className="nav">
 			<div className="logo">
-				<img src={logo} alt="" />
+				<Link to="/">
+					<img src={logo} alt="" />
+				</Link>
 			</div>
 			<div className={`links ${isActive ? "active" : ""}`}>
 				<div className="closebtn">

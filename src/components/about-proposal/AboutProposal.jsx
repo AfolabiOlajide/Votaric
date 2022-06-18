@@ -15,7 +15,7 @@ const AboutProposal = () => {
 				community and if you are already a member, you can create or
 				vote for a proposal below.
 			</p>
-			<Link to="/proposals">
+			<Link to="/proposals" className="max-content">
 				<Button className="primary">View Proposals</Button>
 			</Link>
 		</Card>

@@ -71,6 +71,10 @@ body {
 	gap: 1rem;
 }
 
+.max-content {
+	width: max-content;
+}
+
 .home-section p {
 	color: rgb(121, 118, 118);
 }
