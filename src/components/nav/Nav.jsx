@@ -1,4 +1,7 @@
 import React, { useContext } from "react";
+import { BiMenuAltLeft } from "react-icons/bi";
+import { AiOutlineClose } from "react-icons/ai";
+
 import { connectAccount } from "../../api/walletConnect";
 import VotaricContext from "../../context/VotaricStore";
 import { NavLink } from "react-router-dom";
@@ -6,8 +9,13 @@ import logo from "../../assets/logo.png";
 
 import "./Nav.css";
 import Button from "../../UI/Button";
+import { useState } from "react";
 
 const Nav = () => {
+	const [isActive, setIsActive] = useState(false);
+	const changeActiveStateHandler = () => {
+		setIsActive(!isActive);
+	};
 	let activeStyle = {
 		background: "#c9e265",
 	};
@@ -26,13 +34,17 @@ const Nav = () => {
 			<div className="logo">
 				<img src={logo} alt="" />
 			</div>
-			<div className="links">
+			<div className={`links ${isActive ? "active" : ""}`}>
+				<div className="closebtn">
+					<AiOutlineClose onClick={changeActiveStateHandler} />
+				</div>
 				<div className="link">
 					<NavLink
 						to="/"
 						style={({ isActive }) =>
 							isActive ? activeStyle : undefined
 						}
+						onClick={changeActiveStateHandler}
 					>
 						Home
 					</NavLink>
@@ -43,6 +55,7 @@ const Nav = () => {
 						style={({ isActive }) =>
 							isActive ? activeStyle : undefined
 						}
+						onClick={changeActiveStateHandler}
 					>
 						Proposals
 					</NavLink>
@@ -53,22 +66,28 @@ const Nav = () => {
 						style={({ isActive }) =>
 							isActive ? activeStyle : undefined
 						}
+						onClick={changeActiveStateHandler}
 						// onClick={loadDataHandler}
 					>
 						Dashboard
 					</NavLink>
 				</div>
 			</div>
-			{ctx.address.trim().length > 1 ? (
-				<Button className="secondary">{`${ctx.address.substring(
-					0,
-					6
-				)}...${ctx.address.substring(35)}`}</Button>
-			) : (
-				<Button onClick={connectWalletHandler} className="primary">
-					Connect Wallet
-				</Button>
-			)}
+			<div className="connect">
+				{ctx.address.trim().length > 1 ? (
+					<Button className="secondary">{`${ctx.address.substring(
+						0,
+						6
+					)}...${ctx.address.substring(35)}`}</Button>
+				) : (
+					<Button onClick={connectWalletHandler} className="primary">
+						Connect Wallet
+					</Button>
+				)}
+				<div className="openbtn">
+					<BiMenuAltLeft onClick={changeActiveStateHandler} />
+				</div>
+			</div>
 		</div>
 	);
 };
