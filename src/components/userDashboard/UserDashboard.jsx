@@ -7,12 +7,12 @@ import "./UserDashboard.css";
 
 const UserDashboard = () => {
 	return (
-		<Card>
+		<Card className="home-section">
 			<h1>DashBoard</h1>
 			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-				temporibus aut laudantium harum nostrum illum ut eos odio
-				possimus porro.
+				Dashboard offered to users to be able to view token balances on
+				different chains like Polygon, Ethereum, Binance Smart Chain
+				etc. You can also view NFT assets if available.
 			</p>
 			<Link to="/dashboard">
 				<Button className="primary">Check Dashboard</Button>
