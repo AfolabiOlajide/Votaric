@@ -6,7 +6,7 @@ import "./About.css";
 
 const About = () => {
 	return (
-		<Card className="about">
+		<Card className="about gradient1">
 			<h1>
 				What is <span>VOTARIC</span>
 			</h1>

@@ -1,3 +1,11 @@
 .about h1 span {
 	color: var(--color-secondary);
 }
+
+.about h1 {
+	color: white;
+}
+
+.about p {
+	color: white;
+}
