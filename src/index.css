@@ -1,13 +1,65 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@400;600;700;800&display=swap");
+
+/* 
+font-family: 'Poppins', sans-serif; -- normal fonts
+font-family: 'Roboto Slab', serif; -- Headings
+ */
+/* 
+#C9E265 -- green
+#CB6CE6 -- purple
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+	font-family: "Poppins", sans-serif;
+}
+
+.heading {
+	font-family: "Roboto Slab", serif;
+}
+
+:root {
+	--color-primary: #cb6ce6;
+	--color-secondary: #c9e265;
+}
+
+.gradient1 {
+	background-image: linear-gradient(
+		to right bottom,
+		#c9e265,
+		#7ad88a,
+		#31c7ad,
+		#25b0bd,
+		#5596b4,
+		#5d8eb4,
+		#6985b1,
+		#777baa,
+		#837cbe,
+		#957ad0,
+		#ae75dd,
+		#cb6ce6
+	);
+}
+
+.gradient2 {
+	background-image: linear-gradient(
+		to right bottom,
+		#d0e385,
+		#d3e88b,
+		#d5ed91,
+		#d8f298,
+		#dbf79e,
+		#d2f197,
+		#caeb8f,
+		#c1e588,
+		#abd372,
+		#95c15c,
+		#7eb046,
+		#689f2f
+	);
 }

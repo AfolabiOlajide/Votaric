@@ -1,0 +1,18 @@
+.card {
+	padding: 2rem 3rem;
+	border-radius: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 2rem;
+	box-shadow: -0.5rem 0.5rem 3rem rgba(101, 101, 101, 0.1);
+	transition: 300ms all ease;
+}
+
+.card:hover {
+	transform: scale(1.01);
+}
+
+.card p {
+	color: rgb(121, 118, 118);
+}
