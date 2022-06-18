@@ -16,7 +16,7 @@ const Nav = () => {
 	const connectWalletHandler = async () => {
 		const connected = await connectAccount();
 		ctx.setAddress(connected.address);
-		const dash = await ctx.callDashboardData();
+		// const dash = await ctx.callDashboardData();
 	};
 	// const loadDataHandler = async () => {
 	// 	await ctx.callDashboardData();
