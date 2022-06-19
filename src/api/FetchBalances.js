@@ -7,7 +7,7 @@ const fetchBalances = async (address, chainId) => {
 		const responseData = await response.json();
 		if (response.ok) {
 			return {
-				address: responseData.data.address,
+				// address: responseData.data.address,
 				cryptocurrencyData: responseData.data.items.filter(
 					(data) => data.type === "cryptocurrency"
 				),

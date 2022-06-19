@@ -24,9 +24,14 @@ body {
 	font-family: "Roboto Slab", serif;
 }
 
+.normal-text {
+	font-family: "Poppins", sans-serif;
+}
+
 :root {
 	--color-primary: #cb6ce6;
 	--color-secondary: #c9e265;
+	--color-grey: rgb(121, 118, 118);
 }
 
 .gradient1 {
@@ -45,6 +50,10 @@ body {
 		#ae75dd,
 		#cb6ce6
 	);
+}
+
+.color-grey {
+	color: var(--color-grey);
 }
 
 .gradient2 {
@@ -81,17 +90,25 @@ body {
 
 .green {
 	background-color: rgb(105, 204, 105, 0.8);
-	box-shadow: 0 0 0.3rem rgb(105, 204, 105);
+	box-shadow: 0 0 1rem rgb(105, 204, 105, 0.5);
 }
 
 .red {
 	background-color: rgb(255, 130, 130, 0.8);
-	box-shadow: 0 0 0.3rem rgb(255, 130, 130);
+	box-shadow: 0 0 1rem rgb(255, 130, 130, 0.5);
+}
+
+.color-red {
+	color: rgb(255, 130, 130, 0.8);
 }
 
 .orange {
 	background-color: rgb(238, 169, 41, 0.8);
-	box-shadow: 0 0 0.3rem rgb(238, 169, 41);
+	box-shadow: 0 0 1rem rgb(238, 169, 41, 0.5);
+}
+
+.green-text {
+	color: rgb(37, 167, 37);
 }
 
 @media screen and (max-width: 768px) {

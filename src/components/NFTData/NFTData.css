@@ -1,0 +1,9 @@
+.nft-data {
+	margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+	.nft-data {
+		font-size: 0.7rem;
+	}
+}

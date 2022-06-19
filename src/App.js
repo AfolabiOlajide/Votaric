@@ -1,31 +1,32 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
+import "./App.css";
 import Nav from "./components/nav/Nav";
 import Home from "./pages/Home";
 import Proposals from "./pages/Proposals";
 import Dashboard from "./pages/Dashboard";
 import PageNotFound from "./pages/PageNotFound";
 import ProposalDetail from "./pages/ProposalDetail";
-import VotaricContext from "./context/VotaricStore";
+// import VotaricContext from "./context/VotaricStore";
 
 function App() {
-	const { callDashboardData, setCryptocurrencyData, setNftData, address } =
-		useContext(VotaricContext);
-	const getData = async () => {
-		if (address.trim().length > 1) {
-			const { cryptocurrencyData, nftData } = await callDashboardData();
-			setCryptocurrencyData(cryptocurrencyData);
-			setNftData(nftData);
-		} else {
-			return;
-		}
-	};
+	// const { callDashboardData, setCryptocurrencyData, setNftData, address } =
+	// 	useContext(VotaricContext);
+	// const getData = async () => {
+	// 	if (address.trim().length > 1) {
+	// 		const { cryptocurrencyData, nftData } = await callDashboardData();
+	// 		setCryptocurrencyData(cryptocurrencyData);
+	// 		setNftData(nftData);
+	// 	} else {
+	// 		return;
+	// 	}
+	// };
 
-	useEffect(() => {
-		getData();
-	});
+	// useEffect(() => {
+	// 	getData();
+	// });
 
 	return (
 		<div className="App">

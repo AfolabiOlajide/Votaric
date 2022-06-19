@@ -3,6 +3,7 @@ import { BiMenuAltLeft } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { connectAccount } from "../../api/walletConnect";
+import fetchBalances from "../../api/FetchBalances";
 import VotaricContext from "../../context/VotaricStore";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
@@ -24,11 +25,16 @@ const Nav = () => {
 	const connectWalletHandler = async () => {
 		const connected = await connectAccount();
 		ctx.setAddress(connected.address);
-		// const dash = await ctx.callDashboardData();
+		ctx.setIsLoading(true);
+		const dashBoardData = await fetchBalances(
+			connected.address,
+			ctx.chainId
+		);
+		ctx.setCryptocurrencyData(dashBoardData.cryptocurrencyData);
+		ctx.setNftData(dashBoardData.nftData);
+		ctx.setIsLoading(false);
 	};
-	// const loadDataHandler = async () => {
-	// 	await ctx.callDashboardData();
-	// };
+
 	return (
 		<div className="nav">
 			<div className="logo">
@@ -69,7 +75,6 @@ const Nav = () => {
 							isActive ? activeStyle : undefined
 						}
 						onClick={changeActiveStateHandler}
-						// onClick={loadDataHandler}
 					>
 						Dashboard
 					</NavLink>
@@ -77,12 +82,15 @@ const Nav = () => {
 			</div>
 			<div className="connect">
 				{ctx.address.trim().length > 1 ? (
-					<Button className="secondary">{`${ctx.address.substring(
+					<Button className="secondary normal-text">{`${ctx.address.substring(
 						0,
 						6
 					)}...${ctx.address.substring(35)}`}</Button>
 				) : (
-					<Button onClick={connectWalletHandler} className="primary">
+					<Button
+						onClick={connectWalletHandler}
+						className="primary normal-text"
+					>
 						Connect Wallet
 					</Button>
 				)}

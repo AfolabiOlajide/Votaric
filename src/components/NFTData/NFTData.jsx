@@ -1,13 +1,25 @@
 import React from "react";
 
 import "./NFTData.css";
+// ${props.data.nft_data[0].token_id}
 
 const NFTData = (props) => {
 	return (
-		<div>
-			<div className="">{props.data.contract_address}</div>
-			<div className="">{props.data.contract_name}</div>
-			<div className="">{props.data.contract_ticker_symbol}</div>
+		<div className="nft-data">
+			<div className="">
+				Name:{" "}
+				<span className="color-grey">{props.data.contract_name}</span>
+			</div>
+			<div className="">
+				Symbol:{" "}
+				<span className="color-grey">
+					{props.data.contract_ticker_symbol}
+				</span>
+			</div>
+			<div className="balance">
+				Balance:{" "}
+				<span className="color-grey">{props.data.balance}</span>
+			</div>
 		</div>
 	);
 };

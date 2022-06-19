@@ -2,14 +2,15 @@ import React from "react";
 
 const VotaricContext = React.createContext({
 	address: "",
+	chainId: "",
 	setAddress: () => {},
 	setChainId: () => {},
 	cryptocurrencyData: [],
 	nftData: [],
-	callDashboardData: () => {},
 	setCryptocurrencyData: () => {},
 	setNftData: () => {},
-	fetchData: () => {},
+	isLoading: false,
+	setIsLoading: () => {},
 });
 
 export default VotaricContext;
