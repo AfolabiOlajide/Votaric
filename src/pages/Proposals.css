@@ -4,6 +4,10 @@
 	gap: 2rem;
 	margin-bottom: 2rem;
 }
+.proposals .proposal-list .proposal-link {
+	text-decoration: none;
+	color: inherit;
+}
 
 .proposals .widgets .widget h1 {
 	color: var(--color-primary);

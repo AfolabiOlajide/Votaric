@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { sampleProposal } from "../sampleProposals";
 import Proposal from "../components/proposal/Proposal";
@@ -25,12 +26,17 @@ const Proposals = () => {
 			</div>
 			<div className="proposal-list">
 				{sampleProposal.map((proposal) => (
-					<Proposal
+					<Link
 						key={proposal.id}
-						id={proposal.id}
-						description={proposal.description}
-						status={proposal.status}
-					/>
+						to={`/proposal/${proposal.id}`}
+						className="proposal-link"
+					>
+						<Proposal
+							id={proposal.id}
+							description={proposal.description}
+							status={proposal.status}
+						/>
+					</Link>
 				))}
 			</div>
 		</div>

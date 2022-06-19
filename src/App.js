@@ -6,6 +6,8 @@ import Nav from "./components/nav/Nav";
 import Home from "./pages/Home";
 import Proposals from "./pages/Proposals";
 import Dashboard from "./pages/Dashboard";
+import PageNotFound from "./pages/PageNotFound";
+import ProposalDetail from "./pages/ProposalDetail";
 import VotaricContext from "./context/VotaricStore";
 
 function App() {
@@ -32,7 +34,10 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/proposals" element={<Proposals />} />
+					<Route path="/proposal/:id" element={<ProposalDetail />} />
 					<Route path="/dashboard" element={<Dashboard />} />
+					<Route path="/404" element={<PageNotFound />} />
+					<Route path="*" element={<PageNotFound />} />
 				</Routes>
 			</main>
 		</div>
