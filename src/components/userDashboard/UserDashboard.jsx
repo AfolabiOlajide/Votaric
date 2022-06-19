@@ -10,9 +10,13 @@ const UserDashboard = () => {
 		<Card className="home-section">
 			<h1 className="heading">DashBoard</h1>
 			<p>
-				Dashboard offered to users to be able to view token balances on
-				different chains like Polygon, Ethereum, Binance Smart Chain
-				etc. You can also view NFT assets if available.
+				Dashboard offered to users to be able to view token balance and
+				NFT balances if available, made possible by querying the
+				Covalent API.
+			</p>
+			<p>
+				As querying the API takes time you might have to wait a little
+				before the balances are displayed.
 			</p>
 			<Link to="/dashboard" className="max-content">
 				<Button className="primary">Check Dashboard</Button>
