@@ -27,9 +27,10 @@ const CryptoData = (props) => {
 				<span className="color-grey">{props.data.balance}</span>
 			</div>
 			<div className="value">
-				Value:{" "}
+				Value:
 				<span className="green-text">
-					{separator(props.data.quote.toFixed(4))}
+					{" "}
+					${separator(props.data.quote.toFixed(4))}
 				</span>
 			</div>
 		</div>
