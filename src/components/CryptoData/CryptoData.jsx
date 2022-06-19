@@ -24,7 +24,9 @@ const CryptoData = (props) => {
 			</div>
 			<div className="balance">
 				Token Balance:{" "}
-				<span className="color-grey">{props.data.balance}</span>
+				<span className="color-grey">
+					{separator(props.data.balance)}
+				</span>
 			</div>
 			<div className="value">
 				Value:

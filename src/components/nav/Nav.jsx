@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 
-import { connectAccount } from "../../api/walletConnect";
+import {
+	connectAccount,
+	getCurrentWalletConnected,
+} from "../../api/walletConnect";
 import fetchBalances from "../../api/FetchBalances";
 import VotaricContext from "../../context/VotaricStore";
 import { NavLink, Link } from "react-router-dom";
@@ -10,7 +13,6 @@ import logo from "../../assets/logo.png";
 
 import "./Nav.css";
 import Button from "../../UI/Button";
-import { useState } from "react";
 
 const Nav = () => {
 	const [isActive, setIsActive] = useState(false);
@@ -34,6 +36,23 @@ const Nav = () => {
 		ctx.setNftData(dashBoardData.nftData);
 		ctx.setIsLoading(false);
 	};
+
+	const reloadConnectedWallet = async () => {
+		const connected = await getCurrentWalletConnected();
+		ctx.setAddress(connected.address);
+		ctx.setIsLoading(connected.status);
+		const dashBoardData = await fetchBalances(
+			connected.address,
+			ctx.chainId
+		);
+		ctx.setCryptocurrencyData(dashBoardData.cryptocurrencyData);
+		ctx.setNftData(dashBoardData.nftData);
+		ctx.setIsLoading(false);
+	};
+
+	useEffect(() => {
+		reloadConnectedWallet();
+	}, []);
 
 	return (
 		<div className="nav">
