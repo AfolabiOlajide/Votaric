@@ -1,0 +1,30 @@
+.proposals .widgets {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.proposals .widgets .widget h1 {
+	color: var(--color-primary);
+	font-size: 3rem;
+}
+
+@media screen and (max-width: 680px) {
+	/* .proposals .widgets {
+		flex-direction: column;
+	} */
+
+	.proposals .widgets .widget h1 {
+		font-size: 0.7rem;
+	}
+
+	.proposals .widgets .widget h3 {
+		font-size: 0.5rem;
+	}
+
+	.proposals .widgets .widget {
+		padding: 1.2rem;
+		border-radius: 1rem;
+		margin-bottom: 0.5rem;
+	}
+}
