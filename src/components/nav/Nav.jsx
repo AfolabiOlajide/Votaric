@@ -25,7 +25,7 @@ const Nav = () => {
 	const connectWalletHandler = async () => {
 		const connected = await connectAccount();
 		ctx.setAddress(connected.address);
-		ctx.setIsLoading(true);
+		ctx.setIsLoading(connected.status);
 		const dashBoardData = await fetchBalances(
 			connected.address,
 			ctx.chainId

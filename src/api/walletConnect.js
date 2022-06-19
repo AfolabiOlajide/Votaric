@@ -7,15 +7,18 @@ export async function connectAccount() {
 			console.log(accounts);
 			return {
 				address: accounts[0],
+				status: true,
 			};
 		} catch (error) {
 			return {
 				address: "",
+				status: false,
 			};
 		}
 	} else {
 		return {
 			address: "",
+			status: false,
 		};
 	}
 }
@@ -29,20 +32,24 @@ export const getCurrentWalletConnected = async () => {
 			if (accounts.length > 0) {
 				return {
 					address: accounts[0],
+					status: true,
 				};
 			} else {
 				return {
 					address: "",
+					status: false,
 				};
 			}
 		} catch (error) {
 			return {
 				address: "",
+				status: false,
 			};
 		}
 	} else {
 		return {
 			address: "",
+			status: false,
 		};
 	}
 };
