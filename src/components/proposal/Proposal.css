@@ -1,0 +1,31 @@
+.proposal {
+	padding: 1rem 2rem;
+	border-radius: 1rem;
+}
+
+.proposal .proposal-desc {
+	display: flex;
+	justify-content: space-between;
+}
+
+.proposal .proposal-desc .id {
+	color: rgb(121, 118, 118);
+}
+
+.proposal .status {
+	margin-top: 0.5rem;
+	width: max-content;
+	border-radius: 1rem;
+	padding: 0.5rem;
+	font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+	.proposal .proposal-desc h3 {
+		font-size: 1rem;
+	}
+
+	.proposal .status {
+		font-size: 0.6rem;
+	}
+}

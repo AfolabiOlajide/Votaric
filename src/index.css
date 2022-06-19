@@ -79,6 +79,21 @@ body {
 	color: rgb(121, 118, 118);
 }
 
+.green {
+	background-color: rgb(105, 204, 105, 0.8);
+	box-shadow: 0 0 1rem rgb(105, 204, 105);
+}
+
+.red {
+	background-color: rgb(255, 130, 130, 0.8);
+	box-shadow: 0 0 1rem rgb(255, 130, 130);
+}
+
+.orange {
+	background-color: rgb(238, 169, 41, 0.8);
+	box-shadow: 0 0 1rem rgb(238, 169, 41);
+}
+
 @media screen and (max-width: 768px) {
 	.home-section h1 {
 		font-size: 1.5rem;

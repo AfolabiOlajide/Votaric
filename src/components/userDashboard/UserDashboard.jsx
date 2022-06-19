@@ -8,7 +8,7 @@ import "./UserDashboard.css";
 const UserDashboard = () => {
 	return (
 		<Card className="home-section">
-			<h1>DashBoard</h1>
+			<h1 className="heading">DashBoard</h1>
 			<p>
 				Dashboard offered to users to be able to view token balances on
 				different chains like Polygon, Ethereum, Binance Smart Chain

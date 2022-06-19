@@ -8,7 +8,7 @@ import "./AboutProposal.css";
 const AboutProposal = () => {
 	return (
 		<Card className="about-proposal home-section">
-			<h1>Create or Propose</h1>
+			<h1 className="heading">Create or Propose</h1>
 			<p>
 				To be able to create or propose a proposal, you need to be a
 				member of the community. Click on the button above to join the
