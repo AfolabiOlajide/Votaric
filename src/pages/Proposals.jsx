@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { sampleProposal } from "../sampleProposals";
 import Proposal from "../components/proposal/Proposal";
 import Card from "../UI/Card";
+import Button from "../UI/Button";
 
 import "./Proposals.css";
 
@@ -24,6 +25,17 @@ const Proposals = () => {
 					<h1>23</h1>
 				</Card>
 			</div>
+			<Card className="new-proposal">
+				<h3 className="heading">Write A New Proposal</h3>
+				<form>
+					<textarea
+						name="new-proposal"
+						placeholder="Propose an Idea"
+						id=""
+					></textarea>
+					<Button className="primary">Submit</Button>
+				</form>
+			</Card>
 			<div className="proposal-list">
 				{sampleProposal.map((proposal) => (
 					<Link
