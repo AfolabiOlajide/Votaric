@@ -47,6 +47,8 @@ const Proposals = () => {
 							id={proposal.id}
 							description={proposal.description}
 							status={proposal.status}
+							voteFor={proposal.for}
+							voteAgainst={proposal.against}
 						/>
 					</Link>
 				))}

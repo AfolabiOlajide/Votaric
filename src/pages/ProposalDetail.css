@@ -1,0 +1,35 @@
+.proposal-detail .vote {
+	margin-top: 1.5rem;
+	display: flex;
+	gap: 2rem;
+}
+
+.proposal-detail .yes,
+.proposal-detail .no {
+	padding: 1.3rem;
+	cursor: pointer;
+}
+
+.proposal-detail .previous-votes {
+	margin-top: 2rem;
+}
+
+.proposal-detail .previous-votes h3 {
+	margin-bottom: 1rem;
+}
+
+.proposal-detail .previous-votes .past-vote {
+	padding: 1rem;
+	width: max-content;
+	margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 680px) {
+	.proposal-detail h3 {
+		font-size: 0.8rem;
+	}
+
+	.proposal-detail .previous-votes .past-vote {
+		font-size: 0.7rem;
+	}
+}

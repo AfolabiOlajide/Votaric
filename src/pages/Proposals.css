@@ -37,6 +37,16 @@
 	resize: none;
 }
 
+@media screen and (max-width: 1024px) {
+	.proposals .new-proposal {
+		width: 100%;
+		padding: 1rem;
+	}
+	.proposals .new-proposal form textarea {
+		width: 100%;
+	}
+}
+
 @media screen and (max-width: 680px) {
 	/* .proposals .widgets {
 		flex-direction: column;
@@ -54,12 +64,5 @@
 		padding: 1.2rem;
 		border-radius: 1rem;
 		margin-bottom: 0.5rem;
-	}
-	.proposals .new-proposal {
-		width: 100%;
-		padding: 1rem;
-	}
-	.proposals .new-proposal form textarea {
-		width: 100%;
 	}
 }

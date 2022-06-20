@@ -12,6 +12,26 @@
 	color: rgb(121, 118, 118);
 }
 
+.proposal .proposal-status {
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+}
+
+.proposal .proposal-status .rate {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.rate .for {
+	color: rgb(105, 204, 105, 0.8);
+}
+
+.rate .against {
+	color: rgb(255, 130, 130, 0.8);
+}
+
 .proposal .status {
 	margin-top: 0.5rem;
 	width: max-content;
