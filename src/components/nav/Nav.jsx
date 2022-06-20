@@ -52,7 +52,7 @@ const Nav = () => {
 
 	useEffect(() => {
 		reloadConnectedWallet();
-	}, []);
+	}, []); // eslint-disable-line
 
 	return (
 		<div className="nav">
