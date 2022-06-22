@@ -1,37 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 
 import Proposal from "../components/proposal/Proposal";
-import { sampleProposal } from "../sampleProposals";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import "./ProposalDetail.css";
+import VotaricContext from "../context/VotaricStore";
+import BnToInt from "../api/bnToInt";
+// import Votaric from '../Votaric.json'
 
-const dummy_votes = [
-	{
-		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-		vote: true,
-	},
-	{
-		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-		vote: false,
-	},
-	{
-		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-		vote: true,
-	},
-	{
-		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-		vote: true,
-	},
-	{
-		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-		vote: false,
-	},
-];
+// const dummy_votes = [
+// 	{
+// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
+// 		vote: true,
+// 	},
+// 	{
+// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
+// 		vote: false,
+// 	},
+// 	{
+// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
+// 		vote: true,
+// 	},
+// 	{
+// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
+// 		vote: true,
+// 	},
+// 	{
+// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
+// 		vote: false,
+// 	},
+// ];
 
 const ProposalDetail = () => {
+	const ctx = useContext(VotaricContext);
 	const [answer, setAnswer] = useState();
 	let color;
 
@@ -41,31 +44,32 @@ const ProposalDetail = () => {
 		color = "red";
 	}
 
-	console.log(answer);
-
 	const voteYes = () => setAnswer(true);
 	const voteNo = () => setAnswer(false);
 
 	const { id } = useParams();
-	const proposal = sampleProposal.find((p) => p.id === id);
+	const proposal = ctx.proposals.find((p) => BnToInt(p.id) == id); // eslint-disable-line
+
 	if (proposal === undefined) {
 		return <Navigate to="/404" />;
 	}
+
 	return (
 		<div className="proposal-detail">
 			<Proposal
 				id={proposal.id}
 				description={proposal.description}
-				status={proposal.status}
-				voteFor={proposal.for}
-				voteAgainst={proposal.against}
+				status={proposal.passed}
+				voteFor={proposal.votesUp}
+				voteAgainst={proposal.votesDown}
+				countsConducted={proposal.countsConducted}
 			/>
-			<h3>
+			{/* <h3>
 				Proposer:{" "}
 				<span className="color-grey">
 					0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230
 				</span>
-			</h3>
+			</h3> */}
 
 			<div className="vote">
 				<Card
@@ -82,7 +86,7 @@ const ProposalDetail = () => {
 				</Card>
 			</div>
 			<Button className="primary">Make your vote</Button>
-			<div className="previous-votes">
+			{/* <div className="previous-votes">
 				<h3>Previous Votes</h3>
 				{dummy_votes.map((vote, index) => (
 					<Card
@@ -92,7 +96,7 @@ const ProposalDetail = () => {
 						{vote.address}
 					</Card>
 				))}
-			</div>
+			</div> */}
 		</div>
 	);
 };

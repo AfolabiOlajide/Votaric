@@ -9,8 +9,11 @@
 	color: inherit;
 }
 
-.proposals .widgets .widget h1 {
+.proposals .widgets .widget h1.purple {
 	color: var(--color-primary);
+}
+
+.proposals .widgets .widget h1 {
 	font-size: 3rem;
 }
 

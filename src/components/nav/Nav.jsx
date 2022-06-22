@@ -28,10 +28,7 @@ const Nav = () => {
 		const connected = await connectAccount();
 		ctx.setAddress(connected.address);
 		ctx.setIsLoading(connected.status);
-		const dashBoardData = await fetchBalances(
-			connected.address,
-			ctx.chainId
-		);
+		const dashBoardData = await fetchBalances(connected.address);
 		ctx.setCryptocurrencyData(dashBoardData.cryptocurrencyData);
 		ctx.setNftData(dashBoardData.nftData);
 		ctx.setIsLoading(false);
@@ -41,10 +38,7 @@ const Nav = () => {
 		const connected = await getCurrentWalletConnected();
 		ctx.setAddress(connected.address);
 		ctx.setIsLoading(connected.status);
-		const dashBoardData = await fetchBalances(
-			connected.address,
-			ctx.chainId
-		);
+		const dashBoardData = await fetchBalances(connected.address);
 		ctx.setCryptocurrencyData(dashBoardData.cryptocurrencyData);
 		ctx.setNftData(dashBoardData.nftData);
 		ctx.setIsLoading(false);

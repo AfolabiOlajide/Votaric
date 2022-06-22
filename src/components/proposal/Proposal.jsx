@@ -1,33 +1,48 @@
 import React from "react";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+import BnToInt from "../../api/bnToInt";
 
 import Card from "../../UI/Card";
 import "./Proposal.css";
 
-const Proposal = ({ id, description, status, voteFor, voteAgainst }) => {
+const Proposal = ({
+	id,
+	description,
+	status,
+	voteFor,
+	voteAgainst,
+	countsConducted,
+}) => {
 	let color;
-	if (status === "passed") {
+	let statusText;
+	if (status === true) {
 		color = "green";
-	} else if (status === "rejected") {
+		statusText = "Passed";
+	} else if ((status === false) & (countsConducted === true)) {
 		color = "red";
-	} else {
+		statusText = "Rejected";
+	} else if ((status === false) & (countsConducted === false)) {
 		color = "orange";
+		statusText = "Ongoing";
 	}
+	const proposalId = BnToInt(id);
+	let voteUp = BnToInt(voteFor);
+	let voteDown = BnToInt(voteAgainst);
 
 	return (
 		<Card className="proposal">
 			<div className="proposal-desc">
 				<h3 className="heading">{description}</h3>
-				<span className="id">#{id}</span>
+				<span className="id">#{proposalId}</span>
 			</div>
 			<div className="proposal-status">
-				<div className={`${color} status`}>{status}</div>
+				<div className={`${color} status`}>{statusText}</div>
 				<div className="rate">
 					<h4 className="for">
-						{voteFor} <AiOutlineArrowUp />
+						{voteUp} <AiOutlineArrowUp />
 					</h4>
 					<h4 className="against">
-						{voteAgainst} <AiOutlineArrowDown />
+						{voteDown} <AiOutlineArrowDown />
 					</h4>
 				</div>
 			</div>

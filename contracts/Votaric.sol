@@ -3,7 +3,7 @@ pragma solidity ^0.8.7;
 
 contract Votaric {
     address public chairPerson;
-    uint256 proposalCount;
+    uint256 public proposalCount;
     mapping(address => bool) public membership;
 
     constructor() {

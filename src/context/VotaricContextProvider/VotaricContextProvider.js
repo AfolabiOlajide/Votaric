@@ -1,40 +1,36 @@
 import React, { useState } from "react";
 
 import VotaricStore from "../VotaricStore";
-// import fetchBalances from "../../api/FetchBalances";
 
 const VotaricContextProvider = (props) => {
 	const [address, setAddress] = useState("");
-	const [chainId, setChainId] = useState(137);
 	const [cryptocurrencyData, setCryptocurrencyData] = useState([]);
 	const [nftData, setNftData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-
-	// const callDashboardData = async () => {
-	// 	if (address !== "") {
-	// 		const data = await fetchBalances(address, chainId);
-	// 		console.log(data);
-	// 		setCryptocurrencyData(data.cryptocurrencyData);
-	// 		setNftData(data.nftData);
-	// 	} else {
-	// 		return;
-	// 	}
-	// };
+	const [proposals, setProposals] = useState([]);
+	const [votesUp, setVotesUp] = useState(0);
+	const [votesDown, setVotesDown] = useState(0);
+	const [totalVotes, setTotalVotes] = useState(0);
 
 	return (
 		<VotaricStore.Provider
 			value={{
 				address,
 				setAddress,
-				chainId,
-				setChainId,
 				cryptocurrencyData,
 				nftData,
-				// callDashboardData,
 				setCryptocurrencyData,
 				setNftData,
 				isLoading,
 				setIsLoading,
+				proposals,
+				setProposals,
+				votesUp,
+				setVotesUp,
+				votesDown,
+				setVotesDown,
+				totalVotes,
+				setTotalVotes,
 			}}
 		>
 			{props.children}
