@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { ethers } from "ethers";
 
 import Proposal from "../components/proposal/Proposal";
 import Button from "../UI/Button";
@@ -8,6 +10,8 @@ import Card from "../UI/Card";
 import "./ProposalDetail.css";
 import VotaricContext from "../context/VotaricStore";
 import BnToInt from "../api/bnToInt";
+import Votaric from "../Votaric.json";
+import { CONTRACT_ADDRESS } from "../global";
 // import Votaric from '../Votaric.json'
 
 // const dummy_votes = [
@@ -54,6 +58,91 @@ const ProposalDetail = () => {
 		return <Navigate to="/404" />;
 	}
 
+	// console.log("id: ", id, "Type: ", typeof BnToInt(id));
+
+	const vote = async (e) => {
+		e.preventDefault();
+		if (window.ethereum) {
+			const provider = new ethers.providers.Web3Provider(window.ethereum);
+			const signer = provider.getSigner();
+			const contract = new ethers.Contract(
+				CONTRACT_ADDRESS,
+				Votaric.abi,
+				signer
+			);
+
+			try {
+				const response = await contract.voteOnProposal(
+					BnToInt(id),
+					answer
+				);
+				toast.success("You have voted successfully", {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				console.log(response.hash);
+				return <Navigate to="/proposals" />;
+			} catch (error) {
+				console.log(error.reason);
+				toast.error(error.reason, {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+			}
+		}
+	};
+
+	const makeDecision = async (e) => {
+		e.preventDefault();
+		if (window.ethereum) {
+			const provider = new ethers.providers.Web3Provider(window.ethereum);
+			const signer = provider.getSigner();
+			const contract = new ethers.Contract(
+				CONTRACT_ADDRESS,
+				Votaric.abi,
+				signer
+			);
+
+			try {
+				const response = await contract.finalProposalDecision(
+					BnToInt(id)
+				);
+				toast.success("Proposal Decided On", {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+				console.log(response.hash);
+				return <Navigate to="/proposals" />;
+			} catch (error) {
+				console.log(error.reason);
+				toast.error(error.reason, {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
+			}
+		}
+	};
+
 	return (
 		<div className="proposal-detail">
 			<Proposal
@@ -85,7 +174,14 @@ const ProposalDetail = () => {
 					Vote No
 				</Card>
 			</div>
-			<Button className="primary">Make your vote</Button>
+			<Button className="primary" onClick={vote}>
+				Make your vote
+			</Button>
+			<br />
+			<br />
+			<Button className="secondary" onClick={makeDecision}>
+				Proposal Decision
+			</Button>
 			{/* <div className="previous-votes">
 				<h3>Previous Votes</h3>
 				{dummy_votes.map((vote, index) => (

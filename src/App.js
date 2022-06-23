@@ -14,12 +14,10 @@ import Dashboard from "./pages/Dashboard";
 import PageNotFound from "./pages/PageNotFound";
 import ProposalDetail from "./pages/ProposalDetail";
 import VotaricContext from "./context/VotaricStore";
+import { CONTRACT_ADDRESS } from "./global";
 
 const RPC =
 	"https://polygon-mumbai.g.alchemy.com/v2/JEkIh-yJHU-7-k1W59toYbF1Gi6sq4of";
-// const CONTRACT_ADDRESS = "0xf86C615E1c45F33a24a8Def86C94d213E876Cab7"; former contract address
-// const CONTRACT_ADDRESS = "0x1952a179ec7835A5195726809971A90eA9d6D73e";
-const CONTRACT_ADDRESS = "0x3E7180Bade2c4a40A9F73803CFCA07C178b29b93";
 
 function App() {
 	const ctx = useContext(VotaricContext);
@@ -56,7 +54,10 @@ function App() {
 			<main>
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/proposals" element={<Proposals />} />
+					<Route
+						path="/proposals"
+						element={<Proposals onLoad={getProposal} />}
+					/>
 					<Route path="/proposal/:id" element={<ProposalDetail />} />
 					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/404" element={<PageNotFound />} />

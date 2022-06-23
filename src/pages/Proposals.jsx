@@ -10,8 +10,8 @@ import VotaricContext from "../context/VotaricStore";
 import BnToInt from "../api/bnToInt";
 import "./Proposals.css";
 import Votaric from "../Votaric.json";
-
-const CONTRACT_ADDRESS = "0x3E7180Bade2c4a40A9F73803CFCA07C178b29b93";
+import { CONTRACT_ADDRESS } from "../global";
+// import { useEffect } from "react";
 
 const Proposals = () => {
 	const [writtenProposal, setWrittenProposal] = useState("");
@@ -34,6 +34,15 @@ const Proposals = () => {
 
 			try {
 				const response = await contract.createProposal(writtenProposal);
+				toast.success("You have created a proposal successfully", {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
 				console.log(response.hash);
 			} catch (error) {
 				console.log(error.reason);
@@ -50,6 +59,10 @@ const Proposals = () => {
 		}
 		setWrittenProposal("");
 	}
+
+	// useEffect(() => {
+	// 	onLoad();
+	// }, []); // eslint-disable-line
 
 	return (
 		<div className="proposals">

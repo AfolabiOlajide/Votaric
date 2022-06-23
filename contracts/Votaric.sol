@@ -74,7 +74,7 @@ contract Votaric {
         newProposal.id = proposalCount;
         newProposal.exists = true;
         newProposal.description = _description;
-        newProposal.deadline = block.number + 100;
+        newProposal.deadline = block.number + 3 days;
 
         emit proposalCreated(proposalCount, _description, msg.sender);
         proposalCount++;
@@ -144,8 +144,10 @@ contract Votaric {
     }
 
     function addMember() public {
+        require(!membership[msg.sender], "You are already a member");
         membership[msg.sender] = true;
     }
 }
 
-// 0x3E7180Bade2c4a40A9F73803CFCA07C178b29b93 - testnet deploy / 23
+// 0x7278C29c86B446E2652C8d0c408ff3DEc0124481 - testnet deployed contract address
+// - mainnet deployed contract address

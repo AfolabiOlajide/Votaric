@@ -6,8 +6,7 @@ import Button from "../../UI/Button";
 import Card from "../../UI/Card";
 import "./About.css";
 import Votaric from "../../Votaric.json";
-
-const CONTRACT_ADDRESS = "0x3E7180Bade2c4a40A9F73803CFCA07C178b29b93";
+import { CONTRACT_ADDRESS } from "../../global";
 
 const About = () => {
 	const becomeAMember = async (e) => {
