@@ -10,8 +10,7 @@ import VotaricContext from "../context/VotaricStore";
 import BnToInt from "../api/bnToInt";
 import "./Proposals.css";
 import Votaric from "../Votaric.json";
-import { CONTRACT_ADDRESS } from "../global";
-// import { useEffect } from "react";
+import { MAINNET_CONTRACT_ADDRESS } from "../global";
 
 const Proposals = () => {
 	const [writtenProposal, setWrittenProposal] = useState("");
@@ -27,7 +26,7 @@ const Proposals = () => {
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
 			const signer = provider.getSigner();
 			const contract = new ethers.Contract(
-				CONTRACT_ADDRESS,
+				MAINNET_CONTRACT_ADDRESS,
 				Votaric.abi,
 				signer
 			);
@@ -60,10 +59,6 @@ const Proposals = () => {
 		setWrittenProposal("");
 	}
 
-	// useEffect(() => {
-	// 	onLoad();
-	// }, []); // eslint-disable-line
-
 	return (
 		<div className="proposals">
 			<div className="widgets">
@@ -85,7 +80,7 @@ const Proposals = () => {
 				<form>
 					<textarea
 						name="new-proposal"
-						placeholder="Propose an Idea"
+						placeholder="Make a Proposal"
 						onChange={textAreaChangeHandler}
 						value={writtenProposal}
 					></textarea>

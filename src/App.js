@@ -14,17 +14,17 @@ import Dashboard from "./pages/Dashboard";
 import PageNotFound from "./pages/PageNotFound";
 import ProposalDetail from "./pages/ProposalDetail";
 import VotaricContext from "./context/VotaricStore";
-import { CONTRACT_ADDRESS } from "./global";
+import { MAINNET_CONTRACT_ADDRESS } from "./global";
 
 const RPC =
-	"https://polygon-mumbai.g.alchemy.com/v2/JEkIh-yJHU-7-k1W59toYbF1Gi6sq4of";
+	"https://polygon-mainnet.g.alchemy.com/v2/tFbocnvxaVLxTSCHCVuVHdoBINe_VVTG";
 
 function App() {
 	const ctx = useContext(VotaricContext);
 	const getProposal = async () => {
 		const provider = new ethers.providers.JsonRpcProvider(RPC);
 		const votaricContract = new ethers.Contract(
-			CONTRACT_ADDRESS,
+			MAINNET_CONTRACT_ADDRESS,
 			Votaric.abi,
 			provider
 		);

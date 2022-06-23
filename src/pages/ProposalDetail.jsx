@@ -11,31 +11,7 @@ import "./ProposalDetail.css";
 import VotaricContext from "../context/VotaricStore";
 import BnToInt from "../api/bnToInt";
 import Votaric from "../Votaric.json";
-import { CONTRACT_ADDRESS } from "../global";
-// import Votaric from '../Votaric.json'
-
-// const dummy_votes = [
-// 	{
-// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-// 		vote: true,
-// 	},
-// 	{
-// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-// 		vote: false,
-// 	},
-// 	{
-// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-// 		vote: true,
-// 	},
-// 	{
-// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-// 		vote: true,
-// 	},
-// 	{
-// 		address: "0xA90E1a6A5c00CE8d327F4aAE4fD1c5Cb9c5Ce230",
-// 		vote: false,
-// 	},
-// ];
+import { MAINNET_CONTRACT_ADDRESS } from "../global";
 
 const ProposalDetail = () => {
 	const ctx = useContext(VotaricContext);
@@ -55,10 +31,8 @@ const ProposalDetail = () => {
 	const proposal = ctx.proposals.find((p) => BnToInt(p.id) == id); // eslint-disable-line
 
 	if (proposal === undefined) {
-		return <Navigate to="/404" />;
+		return <Navigate to="/proposals" />;
 	}
-
-	// console.log("id: ", id, "Type: ", typeof BnToInt(id));
 
 	const vote = async (e) => {
 		e.preventDefault();
@@ -66,7 +40,7 @@ const ProposalDetail = () => {
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
 			const signer = provider.getSigner();
 			const contract = new ethers.Contract(
-				CONTRACT_ADDRESS,
+				MAINNET_CONTRACT_ADDRESS,
 				Votaric.abi,
 				signer
 			);
@@ -108,7 +82,7 @@ const ProposalDetail = () => {
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
 			const signer = provider.getSigner();
 			const contract = new ethers.Contract(
-				CONTRACT_ADDRESS,
+				MAINNET_CONTRACT_ADDRESS,
 				Votaric.abi,
 				signer
 			);

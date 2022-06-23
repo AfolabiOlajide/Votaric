@@ -150,4 +150,4 @@ contract Votaric {
 }
 
 // 0x7278C29c86B446E2652C8d0c408ff3DEc0124481 - testnet deployed contract address
-// - mainnet deployed contract address
+// 0x51B3671F116D522dE8BeBabbe8B2dA8b1CD738eE - mainnet deployed contract address
