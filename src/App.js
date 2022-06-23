@@ -1,7 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import { ethers, utils } from "ethers";
+import { ethers } from "ethers";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Votaric from "./Votaric.json";
 import "./App.css";
@@ -16,7 +18,8 @@ import VotaricContext from "./context/VotaricStore";
 const RPC =
 	"https://polygon-mumbai.g.alchemy.com/v2/JEkIh-yJHU-7-k1W59toYbF1Gi6sq4of";
 // const CONTRACT_ADDRESS = "0xf86C615E1c45F33a24a8Def86C94d213E876Cab7"; former contract address
-const CONTRACT_ADDRESS = "0x1952a179ec7835A5195726809971A90eA9d6D73e";
+// const CONTRACT_ADDRESS = "0x1952a179ec7835A5195726809971A90eA9d6D73e";
+const CONTRACT_ADDRESS = "0x3E7180Bade2c4a40A9F73803CFCA07C178b29b93";
 
 function App() {
 	const ctx = useContext(VotaricContext);
@@ -29,24 +32,16 @@ function App() {
 		);
 		ctx.setProposals([]);
 		const proposal = await votaricContract.proposalCount();
+		const totalVotesUp = await votaricContract.totalVotesUp();
+		const totalVotesDown = await votaricContract.totalVotesDown();
 		for (let i = 1; i < proposal.toNumber() + 1; i++) {
 			const proposal = await votaricContract.proposals(i);
 			if (proposal.exists === false) {
 				continue;
 			}
 			ctx.setProposals((prevProposals) => [...prevProposals, proposal]);
-			ctx.setVotesUp(
-				ctx.votesUp +
-					Number(
-						utils.formatUnits(proposal.votesUp.toString(), "wei")
-					)
-			);
-			ctx.setVotesDown(
-				ctx.votesDown +
-					Number(
-						utils.formatUnits(proposal.votesDown.toString(), "wei")
-					)
-			);
+			ctx.setVotesUp(totalVotesUp.toNumber());
+			ctx.setVotesDown(totalVotesDown.toNumber());
 		}
 	};
 
@@ -57,6 +52,7 @@ function App() {
 	return (
 		<div className="App">
 			<Nav />
+			<ToastContainer />
 			<main>
 				<Routes>
 					<Route path="/" element={<Home />} />

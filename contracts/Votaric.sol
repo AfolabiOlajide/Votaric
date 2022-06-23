@@ -4,6 +4,8 @@ pragma solidity ^0.8.7;
 contract Votaric {
     address public chairPerson;
     uint256 public proposalCount;
+    uint256 public totalVotesUp;
+    uint256 public totalVotesDown;
     mapping(address => bool) public membership;
 
     constructor() {
@@ -96,9 +98,11 @@ contract Votaric {
         if (_vote) {
             existingProposal.votesUp++;
             existingProposal.totalVoteCount++;
+            totalVotesUp++;
         } else {
             existingProposal.votesDown++;
             existingProposal.totalVoteCount++;
+            totalVotesDown++;
         }
 
         existingProposal.voteStatus[msg.sender] = true;
@@ -143,3 +147,5 @@ contract Votaric {
         membership[msg.sender] = true;
     }
 }
+
+// 0x3E7180Bade2c4a40A9F73803CFCA07C178b29b93 - testnet deploy / 23

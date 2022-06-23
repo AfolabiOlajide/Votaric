@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ethers } from "ethers";
+import { toast } from "react-toastify";
 
 import Proposal from "../components/proposal/Proposal";
 import Card from "../UI/Card";
@@ -10,7 +11,7 @@ import BnToInt from "../api/bnToInt";
 import "./Proposals.css";
 import Votaric from "../Votaric.json";
 
-const CONTRACT_ADDRESS = "0x1952a179ec7835A5195726809971A90eA9d6D73e";
+const CONTRACT_ADDRESS = "0x3E7180Bade2c4a40A9F73803CFCA07C178b29b93";
 
 const Proposals = () => {
 	const [writtenProposal, setWrittenProposal] = useState("");
@@ -35,7 +36,16 @@ const Proposals = () => {
 				const response = await contract.createProposal(writtenProposal);
 				console.log(response.hash);
 			} catch (error) {
-				console.log(error);
+				console.log(error.reason);
+				toast.error(error.reason, {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
 			}
 		}
 		setWrittenProposal("");
