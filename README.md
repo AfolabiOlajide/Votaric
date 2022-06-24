@@ -1,5 +1,5 @@
--   View Demo Application: [https://votaric.netlify.app](https://votaric.netlify.app)
--   Video Demo Presentation : Coming soon
+-   View Demo Application: [https://votaric.netlify.app](https://votaric.netlify.app).
+-   Video Demo Presentation : [https://youtu.be/TSKlQd2vrlU](https://youtu.be/TSKlQd2vrlU).
 
 # VOTARIC
 
